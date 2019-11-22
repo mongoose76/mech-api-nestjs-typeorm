@@ -26,7 +26,9 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Microservice containing the structure of Battletech mechs.
+
+WIKI: https://battletech.gamepedia.com/Battletech_Wiki
 
 ## Installation
 
