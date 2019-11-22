@@ -1,0 +1,2 @@
+docker kill nestjs-jackpots-db
+docker rm nestjs-jackpots-db

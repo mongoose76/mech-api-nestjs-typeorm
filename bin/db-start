@@ -1,0 +1,7 @@
+./bin/db-stop
+docker run \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=nestjs-battletech \
+  -p 5432:5432 \
+  --name nestjs-battletech-db -d circleci/postgres:9.6.5-alpine-ram
