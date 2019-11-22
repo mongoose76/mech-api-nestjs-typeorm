@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BattleMech } from './battlemech/battlemech.entity';
-import { BattleMechController } from './battlemech/battlemech.controller';
+import { Battlemech } from './battlemech/battlemech.entity';
+import { BattlemechController } from './battlemech/battlemech.controller';
 
 @Module({
   imports: [
@@ -14,12 +14,12 @@ import { BattleMechController } from './battlemech/battlemech.controller';
       username: 'postgres',
       password: 'postgres',
       database: 'nestjs-battletech',
-      entities: [BattleMech],
+      entities: [Battlemech],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([BattleMech]), 
+    TypeOrmModule.forFeature([Battlemech]), 
   ],  
-  controllers: [AppController, BattleMechController],
+  controllers: [AppController, BattlemechController],
   providers: [AppService],
 })
 export class AppModule {}
