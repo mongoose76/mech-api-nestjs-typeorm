@@ -17,6 +17,6 @@ export class BattlemechController {
 
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Battlemech> {
-    return this.battlemechRepository.findOne(id, {relations: ['type']});
+    return this.battlemechRepository.findOne(id, {relations: ['type', 'weaponHardpoints']});
   }
 }
