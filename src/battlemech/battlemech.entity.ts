@@ -1,12 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from 'typeorm';
+import { BattlemechType } from 'src/battlemechType/battlemechType.entity';
 
 @Entity()
 export class Battlemech {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: '200' })
-  type: string;
+  @ManyToOne(type => BattlemechType)
+  @JoinColumn({ name: 'type_id'})
+  type: number;
 
   @Column({ length: '50' })
   subtype: string;
