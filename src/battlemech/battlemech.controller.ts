@@ -12,11 +12,11 @@ export class BattlemechController {
 
   @Get()
   findAll(): Promise<Battlemech[]> {
-    return this.battlemechRepository.find();
+    return this.battlemechRepository.find({relations: ['type']});
   }
 
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Battlemech> {
-    return this.battlemechRepository.findOne(id);
+    return this.battlemechRepository.findOne(id, {relations: ['type']});
   }
 }

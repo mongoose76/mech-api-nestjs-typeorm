@@ -1,5 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from 'typeorm';
-import { BattlemechType } from 'src/battlemechType/battlemechType.entity';
+import { BattlemechType } from '../battlemechType/battlemechType.entity';
+
+export enum BattlemechClass {
+  LIGHT = "light",
+  MEDIUM = "medium",
+  HEAVY = "heavy",
+  ASSAULT = "assault"
+}
 
 @Entity()
 export class Battlemech {
@@ -8,15 +15,19 @@ export class Battlemech {
 
   @ManyToOne(type => BattlemechType)
   @JoinColumn({ name: 'type_id'})
-  type: number;
+  type: BattlemechType;
 
   @Column({ length: '50' })
   subtype: string;
 
-  @Column({ length: '50' })
-  class: string;
+  @Column({
+    type: "enum",
+    enum: BattlemechClass,
+    default: BattlemechClass.HEAVY
+  })
+  class: BattlemechClass
 
-  @Column()
+  @Column({ length: '100' })
   stock_role: string;
 
   @Column()
