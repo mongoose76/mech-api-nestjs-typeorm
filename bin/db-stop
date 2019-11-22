@@ -1,2 +1,2 @@
-docker kill nestjs-jackpots-db
-docker rm nestjs-jackpots-db
+docker kill nestjs-battletech-db
+docker rm nestjs-battletech-db
