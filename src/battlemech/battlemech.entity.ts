@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class BattleMech {
+export class Battlemech {
   @PrimaryGeneratedColumn()
   id: number;
 

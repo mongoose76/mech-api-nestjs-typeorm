@@ -1,22 +1,22 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BattleMech } from './battlemech.entity';
+import { Battlemech } from './battlemech.entity';
 import { Repository } from 'typeorm';
 
 @Controller('battlemech')
-export class BattleMechController {
+export class BattlemechController {
   constructor(
-    @InjectRepository(BattleMech)
-    private readonly battlemechRepository: Repository<BattleMech>,
+    @InjectRepository(Battlemech)
+    private readonly battlemechRepository: Repository<Battlemech>,
   ) {}
 
   @Get()
-  findAll(): Promise<BattleMech[]> {
+  findAll(): Promise<Battlemech[]> {
     return this.battlemechRepository.find();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<BattleMech> {
+  findOne(@Param('id') id: number): Promise<Battlemech> {
     return this.battlemechRepository.findOne(id);
   }
 }
