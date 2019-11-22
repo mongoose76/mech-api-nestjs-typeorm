@@ -3,13 +3,13 @@ import { Battlemech } from 'src/battlemech/battlemech.entity';
 
 export enum MechBodypart {
   HEAD = 'head',
-  LEFT_ARM = 'l. arm',
-  LEFT_TORSO = 'l. torso',  
-  RIGHT_ARM = 'r. arm',
-  RIGHT_TORSO = 'r. torso',
-  CENTER_TORSO = 'c. torso',
-  LEFT_LEG = 'l. leg',
-  RIGHT_LEG = 'r. leg'
+  LEFT_ARM = 'left arm',
+  LEFT_TORSO = 'left torso',  
+  RIGHT_ARM = 'right arm',
+  RIGHT_TORSO = 'right torso',
+  CENTER_TORSO = 'center torso',
+  LEFT_LEG = 'left leg',
+  RIGHT_LEG = 'right leg'
 }
 
 export enum WeaponType {
