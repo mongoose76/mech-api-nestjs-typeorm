@@ -23,7 +23,7 @@ export class Battlemech {
   @Column({
     type: "enum",
     enum: BattlemechClass,
-    default: BattlemechClass.HEAVY
+    default: BattlemechClass.LIGHT
   })
   class: BattlemechClass
 
