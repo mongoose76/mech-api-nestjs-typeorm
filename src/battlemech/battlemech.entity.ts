@@ -5,15 +5,24 @@ export class Battlemech {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({length: "200"})
+  @Column({ length: '200' })
   type: string;
 
-  @Column({length: "50"})
+  @Column({ length: '50' })
   subtype: string;
 
-  @Column({length: "50"})
-  weightClass: string;
+  @Column({ length: '50' })
+  class: string;
 
   @Column()
-  weight: number;
+  stock_role: string;
+
+  @Column()
+  tonnage: number;
+
+  @Column()
+  cost: number;
+
+  @Column()
+  rarity: number;
 }

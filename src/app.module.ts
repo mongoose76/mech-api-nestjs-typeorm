@@ -17,8 +17,8 @@ import { BattlemechController } from './battlemech/battlemech.controller';
       entities: [Battlemech],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Battlemech]), 
-  ],  
+    TypeOrmModule.forFeature([Battlemech]),
+  ],
   controllers: [AppController, BattlemechController],
   providers: [AppService],
 })
