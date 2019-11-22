@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Battlemech } from 'src/battlemech/battlemech.entity';
+import { Battlemech } from '../battlemech/battlemech.entity';
 
 export enum MechBodypart {
   HEAD = 'head',

@@ -32,7 +32,22 @@ export class Battlemech {
   stock_role: string;
 
   @Column()
-  tonnage: number;
+  tonnageTotal: number;
+
+  @Column()
+  tonnageFree: number;
+
+  @Column()
+  damageMelee: number;
+
+  @Column()
+  damageDFA: number;
+
+  @Column()
+  walkDistance: number;
+
+  @Column()
+  jumpJets: number;
 
   @Column()
   cost: number;

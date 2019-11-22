@@ -17,7 +17,8 @@ export class SeedData1574419296985 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
-        await queryRunner.manager.getRepository('battlemech').clear();
+        await queryRunner.manager.getRepository('weapon_hardpoint').clear();
+        await queryRunner.manager.getRepository('battlemech').clear();        
         await queryRunner.manager.getRepository('battlemech_type').clear();
     }
 
