@@ -36,6 +36,11 @@ WIKI: https://battletech.gamepedia.com/Battletech_Wiki
 $ yarn install
 ```
 
+## Requirements (dev)
+```
+The Postgres database runs in a docker container so you need Docker.
+```
+
 ## Running the app
 
 ```bash
