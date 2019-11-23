@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Battlemech } from './battlemech/battlemech.entity';
 import { BattlemechController } from './battlemech/battlemech.controller';
 import { BattlemechType } from './battlemechType/battlemechType.entity';
-import { WeaponHardpoint } from './weaponHardpoint/weaponHardpoint.entity';
+import { MechWeaponHardpoint } from './battlemechWeaponHardpoint/battlemechWeaponHardpoint.entity';
 
 @Module({
   imports: [
@@ -16,10 +16,10 @@ import { WeaponHardpoint } from './weaponHardpoint/weaponHardpoint.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'nestjs-battletech',
-      entities: [Battlemech, BattlemechType, WeaponHardpoint],
+      entities: [Battlemech, BattlemechType, MechWeaponHardpoint],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Battlemech, BattlemechType, WeaponHardpoint]),
+    TypeOrmModule.forFeature([Battlemech, BattlemechType, MechWeaponHardpoint]),
   ],
   controllers: [AppController, BattlemechController],
   providers: [AppService],
