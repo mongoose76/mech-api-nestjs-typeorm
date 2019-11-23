@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { BattlemechType } from '../battlemechType/battlemechType.entity';
-import { MechWeaponHardpoint, WeaponType } from '../battlemechWeaponHardpoint/battlemechWeaponHardpoint.entity';
+import { MechType } from '../mechType/mechType.entity';
+import { MechWeaponHardpoint, WeaponType } from '../mechWeaponHardpoint/mechWeaponHardpoint.entity';
 
-export enum BattlemechClass {
+export enum MechClass {
   LIGHT = "light",
   MEDIUM = "medium",
   HEAVY = "heavy",
@@ -10,22 +10,22 @@ export enum BattlemechClass {
 }
 
 @Entity()
-export class Battlemech {
+export class Mech {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(type => BattlemechType)
-  type: BattlemechType;
+  @ManyToOne(type => MechType)
+  type: MechType;
 
   @Column({ length: '50' })
   subtype: string;
 
   @Column({
     type: "enum",
-    enum: BattlemechClass,
-    default: BattlemechClass.LIGHT
+    enum: MechClass,
+    default: MechClass.LIGHT
   })
-  class: BattlemechClass
+  class: MechClass
 
   @Column({ length: '100' })
   stockRole: string;
@@ -54,6 +54,6 @@ export class Battlemech {
   @Column()
   rarity: number;
 
-  @OneToMany(type => MechWeaponHardpoint, mechToHardpoint => mechToHardpoint.battlemech)
+  @OneToMany(type => MechWeaponHardpoint, mechToHardpoint => mechToHardpoint.mech)
   weaponHardpoints: MechWeaponHardpoint[];
 }

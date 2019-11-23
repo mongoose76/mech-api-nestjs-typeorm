@@ -1,4 +1,4 @@
-export const BattlemechsSeed = [
+export const MechsSeed = [
   {
     type: 'Commando',
     subtype: 'COM-1B',    

@@ -1,4 +1,4 @@
-export const BattlemechTypesSeed = [
+export const MechTypesSeed = [
   {
     name: 'Commando'
   },

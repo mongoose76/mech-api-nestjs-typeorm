@@ -25,7 +25,7 @@ export class MechWeaponHardpoint {
   id: number;
 
   @ManyToOne(type => Mech, mech => mech.weaponHardpoints)
-  battlemech: Mech;
+  mech: Mech;
 
   @Column({
     type: "enum",

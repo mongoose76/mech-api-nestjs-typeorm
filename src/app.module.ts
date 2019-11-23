@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Battlemech } from './battlemech/battlemech.entity';
-import { BattlemechController } from './battlemech/battlemech.controller';
-import { BattlemechType } from './battlemechType/battlemechType.entity';
-import { MechWeaponHardpoint } from './battlemechWeaponHardpoint/battlemechWeaponHardpoint.entity';
+import { Mech } from './mech/mech.entity';
+import { MechController } from './mech/mech.controller';
+import { MechType } from './mechType/mechType.entity';
+import { MechWeaponHardpoint } from './mechWeaponHardpoint/mechWeaponHardpoint.entity';
 
 @Module({
   imports: [
@@ -16,12 +16,12 @@ import { MechWeaponHardpoint } from './battlemechWeaponHardpoint/battlemechWeapo
       username: 'postgres',
       password: 'postgres',
       database: 'nestjs-battletech',
-      entities: [Battlemech, BattlemechType, MechWeaponHardpoint],
+      entities: [Mech, MechType, MechWeaponHardpoint],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Battlemech, BattlemechType, MechWeaponHardpoint]),
+    TypeOrmModule.forFeature([Mech, MechType, MechWeaponHardpoint]),
   ],
-  controllers: [AppController, BattlemechController],
+  controllers: [AppController, MechController],
   providers: [AppService],
 })
 export class AppModule {}
