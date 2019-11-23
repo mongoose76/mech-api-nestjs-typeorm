@@ -16,7 +16,7 @@ export enum WeaponType {
   ENERGY = 'energy',
   SUPPORT = 'support',
   MISSILE = 'mssile',  
-  BALISSTIC = 'balisstic',
+  BALISSTIC = 'ballistic',
 }
 
 @Entity()
