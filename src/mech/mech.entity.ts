@@ -54,6 +54,9 @@ export class Mech {
   @Column()
   rarity: number;
 
-  @OneToMany(type => MechWeaponHardpoint, mechToHardpoint => mechToHardpoint.mech)
+  @OneToMany(type => MechWeaponHardpoint, mechToHardpoint => mechToHardpoint.mech, 
+    {
+      cascade: true
+    })
   weaponHardpoints: MechWeaponHardpoint[];
 }
