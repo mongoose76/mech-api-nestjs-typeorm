@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 import { MechsSeed } from '../seed/mechs.seed';
 import { MechTypesSeed } from '../seed/mechTypes.seed';
+import { MechWeaponHardpoint } from "../src/mechWeaponHardpoint/mechWeaponHardpoint.entity";
 
 export class SeedData1574419296985 implements MigrationInterface {
 
@@ -12,14 +13,20 @@ export class SeedData1574419296985 implements MigrationInterface {
         for (let mech of mechs) {
             let mechType:any = await queryRunner.manager.getRepository('mech_type').findOne({ name: mech.type });
             mech.type = mechType.id;
+            mech.weaponHardpoints = [];
+            for (let h of mech.hardpoints) {
+                let hardpoint = new MechWeaponHardpoint();
+                hardpoint.mech = mech;
+                hardpoint.bodypart = h.bodypart;
+                hardpoint.type = h.type;
+                mech.weaponHardpoints.push(hardpoint);
+            }
             await queryRunner.manager.getRepository('mech').save(mech);
         }
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
-        await queryRunner.manager.getRepository('mech_weapon_hardpoint').clear();
-        await queryRunner.manager.getRepository('mech').clear();        
-        await queryRunner.manager.getRepository('mech_type').clear();
+        await queryRunner.query("TRUNCATE TABLE mech, mech_weapon_hardpoint, mech_type");
     }
 
 }

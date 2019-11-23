@@ -11,7 +11,17 @@ export const MechsSeed = [
     walkDistance: 210,
     jumpJets: 8,
     cost: 2000000,
-    rarity: 0
+    rarity: 0,
+    hardpoints: [
+      {
+        bodypart: 'left arm',
+        type: 'energy'
+      },
+      {
+        bodypart: 'right arm',
+        type: 'ballistic'
+      }
+    ]
   },
   {
     type: 'Commando',
@@ -25,7 +35,8 @@ export const MechsSeed = [
     walkDistance: 210,
     jumpJets: 8,
     cost: 2000000,
-    rarity: 0
+    rarity: 0,
+    hardpoints: []
   },
   {
     type: 'Locust',
@@ -39,7 +50,8 @@ export const MechsSeed = [
     walkDistance: 210,
     jumpJets: 8,
     cost: 1642000,
-    rarity: 0
+    rarity: 0,
+    hardpoints: []
   },
   {
     type: 'Locust',
@@ -53,6 +65,7 @@ export const MechsSeed = [
     walkDistance: 210,
     jumpJets: 8,
     cost: 1800000,
-    rarity: 0
+    rarity: 0,
+    hardpoints: []
   },  
 ];
