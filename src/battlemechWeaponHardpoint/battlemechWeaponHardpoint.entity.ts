@@ -20,7 +20,7 @@ export enum WeaponType {
 }
 
 @Entity()
-export class WeaponHardpoint {
+export class MechWeaponHardpoint {
   @PrimaryGeneratedColumn()
   id: number;
 
