@@ -15,7 +15,6 @@ export class Battlemech {
   id: number;
 
   @ManyToOne(type => BattlemechType)
-  @JoinColumn({ name: 'type_id'})
   type: BattlemechType;
 
   @Column({ length: '50' })
@@ -29,7 +28,7 @@ export class Battlemech {
   class: BattlemechClass
 
   @Column({ length: '100' })
-  stock_role: string;
+  stockRole: string;
 
   @Column()
   tonnageTotal: number;
