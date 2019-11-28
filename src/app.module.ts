@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Mech } from './mech/mech.entity';
 import { MechController } from './mech/mech.controller';
 import { MechType } from './mechType/mechType.entity';
-import { MechWeaponHardpoint } from './mechWeaponHardpoint/mechWeaponHardpoint.entity';
+import { MechWeaponHardpoint } from './mech/mechWeaponHardpoint.entity';
 
 @Module({
   imports: [
