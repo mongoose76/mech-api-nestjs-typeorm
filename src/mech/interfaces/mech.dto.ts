@@ -1,9 +1,10 @@
 import { MechHardpointDto } from './mechHardpoint.dto';
+import { MechClass } from './mechEnums';
 
 export class MechDto {
-  readonly type: string;
+  readonly typeId: number;
   readonly subtype: string;
-  readonly class: string;
+  readonly class: MechClass;
   readonly stockRole: string;
   readonly tonnageTotal: number;
   readonly tonnageFree: number;
