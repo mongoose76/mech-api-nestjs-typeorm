@@ -12,11 +12,13 @@ export class MechController {
 
   @Get()
   findAll(): Promise<Mech[]> {
-    return this.mechRepository.find({relations: ['type']});
+    return this.mechRepository.find({ relations: ['type'] });
   }
 
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Mech> {
-    return this.mechRepository.findOne(id, {relations: ['type', 'weaponHardpoints']});
+    return this.mechRepository.findOne(id, {
+      relations: ['type', 'weaponHardpoints'],
+    });
   }
 }

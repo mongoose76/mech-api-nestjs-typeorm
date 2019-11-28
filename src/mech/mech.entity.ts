@@ -1,13 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, ManyToMany, JoinTable, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { MechType } from '../mechType/mechType.entity';
-import { MechWeaponHardpoint, WeaponType } from '../mechWeaponHardpoint/mechWeaponHardpoint.entity';
-
-export enum MechClass {
-  LIGHT = "light",
-  MEDIUM = "medium",
-  HEAVY = "heavy",
-  ASSAULT = "assault"
-}
+import { MechWeaponHardpoint } from './mechWeaponHardpoint.entity';
+import { MechClass } from './interfaces/mechEnums';
 
 @Entity()
 export class Mech {
@@ -21,11 +21,11 @@ export class Mech {
   subtype: string;
 
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: MechClass,
-    default: MechClass.LIGHT
+    default: MechClass.LIGHT,
   })
-  class: MechClass
+  class: MechClass;
 
   @Column({ length: '100' })
   stockRole: string;
@@ -54,9 +54,12 @@ export class Mech {
   @Column()
   rarity: number;
 
-  @OneToMany(type => MechWeaponHardpoint, mechToHardpoint => mechToHardpoint.mech, 
+  @OneToMany(
+    type => MechWeaponHardpoint,
+    mechToHardpoint => mechToHardpoint.mech,
     {
-      cascade: true
-    })
+      cascade: true,
+    },
+  )
   weaponHardpoints: MechWeaponHardpoint[];
 }
