@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Mech } from './mech.entity';
 import { Repository } from 'typeorm';
@@ -26,5 +26,10 @@ export class MechController {
   @Post()
   create(@Body() mechDto: MechDto) {
     return this.mechRepository.save(mechDto);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.mechRepository.delete(id);
   }
 }
