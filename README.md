@@ -26,7 +26,7 @@
 
 ## Description
 
-Microservice containing the structure of Battletech mechs.
+This microservice exposes an API to a repository with  data about Battletech mechs.
 
 WIKI: https://battletech.gamepedia.com/Battletech_Wiki
 
@@ -52,6 +52,12 @@ $ yarn run start:dev
 
 # production mode
 $ yarn run start:prod
+```
+
+## Swagger definition
+
+```bash
+http://localhost:3000/api
 ```
 
 ## Test
