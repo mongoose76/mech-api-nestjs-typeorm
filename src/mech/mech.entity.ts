@@ -8,7 +8,6 @@ import {
 import { MechType } from '../mechType/mechType.entity';
 import { MechWeaponHardpoint } from './mechWeaponHardpoint.entity';
 import { MechClass } from './interfaces/mechEnums';
-import { IsInt, Max } from 'class-validator';
 
 @Entity()
 export class Mech {
@@ -28,14 +27,12 @@ export class Mech {
   })
   class: MechClass;
 
-  @Column({ length: '100' })  
+  @Column({ length: '100' })
   stockRole: string;
-  
-  @Column()  
-  @IsInt()
-  @Max(10)
+
+  @Column()
   tonnageTotal: number;
-  
+
   @Column()
   tonnageFree: number;
 
