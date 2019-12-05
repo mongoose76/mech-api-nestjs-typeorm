@@ -77,7 +77,7 @@ $ yarn run test:cov
 
 - [ ] write more unit tests
 - [ ] write at least some e2e tests
-- [ ] try Objection.js
+- [ ] try a 2nd ORM
 - [ ] try https://apidocjs.com/ to generate API documentation
 
 ## Support
