@@ -78,6 +78,7 @@ $ yarn run test:cov
 - [ ] write more unit tests
 - [ ] write at least some e2e tests
 - [ ] try Objection.js
+- [ ] try https://apidocjs.com/ to generate API documentation
 
 ## Support
 
