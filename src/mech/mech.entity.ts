@@ -18,7 +18,7 @@ export class Mech {
   @ManyToOne(type => MechType)
   type: MechType;
 
-  @Index('mech_subtype_idx', { unique: true,  })
+  @Index('mech_subtype_idx', { unique: true })
   @Column({ length: '50' })
   subtype: string;
 
