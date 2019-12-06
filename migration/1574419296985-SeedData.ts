@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 import { MechsSeed } from '../seed/mechs.seed';
 import { MechTypesSeed } from '../seed/mechTypes.seed';
-import { MechHardpointEntity } from "../src/mech/mechWeaponHardpoint.entity";
+import { MechHardpointEntity } from "../src/mech/mechHardpoint.entity";
 
 export class SeedData1574419296985 implements MigrationInterface {
 

@@ -7,11 +7,11 @@ import {
   Index,
 } from 'typeorm';
 import { MechTypeEntity } from '../mechType/mechType.entity';
-import { MechHardpointEntity as MechHardpoint } from './mechWeaponHardpoint.entity';
+import { MechHardpointEntity as MechHardpoint } from './mechHardpoint.entity';
 import { MechClass } from './interfaces/mechEnums';
 import { MechDto } from './interfaces/mech.dto';
 
-@Entity()
+@Entity('mech')
 export class MechEntity {
   @PrimaryGeneratedColumn()
   id: number;

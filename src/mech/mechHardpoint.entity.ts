@@ -3,7 +3,7 @@ import { MechEntity } from './mech.entity';
 import { MechBodypart, WeaponType } from './interfaces/mechEnums';
 import { MechHardpointDto } from './interfaces/mechHardpoint.dto';
 
-@Entity()
+@Entity('mech_hardpoint')
 export class MechHardpointEntity {
   @PrimaryGeneratedColumn()
   id: number;

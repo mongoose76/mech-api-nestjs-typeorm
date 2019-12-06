@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('mech_type')
 export class MechTypeEntity {
   @PrimaryGeneratedColumn()
   id: number;
