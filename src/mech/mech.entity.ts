@@ -86,7 +86,9 @@ export class Mech {
       jumpJets: this.jumpJets,
       cost: this.cost,
       rarity: this.rarity,
-      hardpoints: this.weaponHardpoints ? this.weaponHardpoints.map(hardpoint => hardpoint.toDTO()) : []
+      hardpoints: this.weaponHardpoints
+        ? this.weaponHardpoints.map(hardpoint => hardpoint.toDTO())
+        : [],
     };
   }
 }

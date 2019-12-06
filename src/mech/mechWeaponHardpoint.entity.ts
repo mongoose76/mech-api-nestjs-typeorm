@@ -28,13 +28,13 @@ export class MechWeaponHardpoint {
   })
   type: WeaponType;
 
-    /**
+  /**
    * name
    */
   public toDTO(): MechHardpointDto {
     return {
       bodypart: this.bodypart,
-      type: this.type
+      type: this.type,
     };
   }
 }
