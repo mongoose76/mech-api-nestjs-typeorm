@@ -6,6 +6,7 @@ import { Mech } from './mech/mech.entity';
 import { MechController } from './mech/mech.controller';
 import { MechType } from './mechType/mechType.entity';
 import { MechWeaponHardpoint } from './mech/mechWeaponHardpoint.entity';
+import { MechService } from './mech/mech.service';
 
 @Module({
   imports: [
@@ -22,6 +23,6 @@ import { MechWeaponHardpoint } from './mech/mechWeaponHardpoint.entity';
     TypeOrmModule.forFeature([Mech, MechType, MechWeaponHardpoint]),
   ],
   controllers: [AppController, MechController],
-  providers: [AppService],
+  providers: [AppService, MechService],
 })
 export class AppModule {}

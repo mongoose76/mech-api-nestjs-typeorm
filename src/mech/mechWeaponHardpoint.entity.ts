@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Mech } from './mech.entity';
 import { MechBodypart, WeaponType } from './interfaces/mechEnums';
+import { MechHardpointDto } from './interfaces/mechHardpoint.dto';
 
 @Entity()
 export class MechWeaponHardpoint {
@@ -26,4 +27,14 @@ export class MechWeaponHardpoint {
     default: WeaponType.SUPPORT,
   })
   type: WeaponType;
+
+    /**
+   * name
+   */
+  public toDTO(): MechHardpointDto {
+    return {
+      bodypart: this.bodypart,
+      type: this.type
+    };
+  }
 }

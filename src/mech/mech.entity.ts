@@ -9,11 +9,15 @@ import {
 import { MechType } from '../mechType/mechType.entity';
 import { MechWeaponHardpoint } from './mechWeaponHardpoint.entity';
 import { MechClass } from './interfaces/mechEnums';
+import { MechDto } from './interfaces/mech.dto';
 
 @Entity()
 export class Mech {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  typeId: number;
 
   @ManyToOne(type => MechType)
   type: MechType;
@@ -64,4 +68,25 @@ export class Mech {
     },
   )
   weaponHardpoints: MechWeaponHardpoint[];
+
+  /**
+   * name
+   */
+  public toDTO(): MechDto {
+    return {
+      typeId: this.type.id,
+      subtype: this.subtype,
+      class: this.class,
+      stockRole: this.stockRole,
+      tonnageTotal: this.tonnageTotal,
+      tonnageFree: this.tonnageFree,
+      damageMelee: this.damageMelee,
+      damageDFA: this.damageDFA,
+      walkDistance: this.walkDistance,
+      jumpJets: this.jumpJets,
+      cost: this.cost,
+      rarity: this.rarity,
+      hardpoints: this.weaponHardpoints ? this.weaponHardpoints.map(hardpoint => hardpoint.toDTO()) : []
+    };
+  }
 }

@@ -1,34 +1,29 @@
 import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Mech } from './mech.entity';
-import { Repository, DeleteResult } from 'typeorm';
+import { DeleteResult } from 'typeorm';
 import { MechDto } from './interfaces/mech.dto';
 import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
+import { MechService } from './mech.service';
 
 @ApiTags('mech')
 @Controller('mech')
 export class MechController {
-  constructor(
-    @InjectRepository(Mech)
-    private readonly mechRepository: Repository<Mech>,
-  ) {}
+  constructor(private readonly mechService: MechService) {}
 
   @ApiResponse({
     type: Mech,
   })
   @Get()
-  findAll(): Promise<Mech[]> {
-    return this.mechRepository.find({ relations: ['type'] });
+  findAll(): Promise<MechDto[]> {
+    return this.mechService.findAll();
   }
 
   @ApiResponse({
     type: Mech,
   })
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Mech> {
-    return this.mechRepository.findOne(id, {
-      relations: ['type', 'weaponHardpoints'],
-    });
+  findOne(@Param('id') id: number): Promise<MechDto> {
+    return this.mechService.findOne(id);
   }
 
   @ApiCreatedResponse({
@@ -37,7 +32,7 @@ export class MechController {
   })
   @Post()
   create(@Body() mechDto: MechDto): Promise<Mech> {
-    return this.mechRepository.save(mechDto);
+    return this.mechService.create(mechDto);
   }
 
   @ApiResponse({
@@ -45,6 +40,6 @@ export class MechController {
   })
   @Delete(':id')
   delete(@Param('id') id: number): Promise<DeleteResult> {
-    return this.mechRepository.delete(id);
+    return this.mechService.delete(id);
   }
 }
