@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 import { MechsSeed } from '../seed/mechs.seed';
 import { MechTypesSeed } from '../seed/mechTypes.seed';
-import { MechWeaponHardpoint } from "../src/mech/mechWeaponHardpoint.entity";
+import { MechHardpointEntity } from "../src/mech/mechWeaponHardpoint.entity";
 
 export class SeedData1574419296985 implements MigrationInterface {
 
@@ -15,7 +15,7 @@ export class SeedData1574419296985 implements MigrationInterface {
             mech.type = mechType.id;
             mech.weaponHardpoints = [];
             for (let h of mech.hardpoints) {
-                let hardpoint = new MechWeaponHardpoint();
+                let hardpoint = new MechHardpointEntity();
                 hardpoint.mech = mech;
                 hardpoint.bodypart = h.bodypart;
                 hardpoint.type = h.type;

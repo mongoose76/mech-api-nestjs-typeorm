@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Mech } from './mech.entity';
+import { MechEntity } from './mech.entity';
 import { Repository, DeleteResult } from 'typeorm';
 import { MechDto } from './interfaces/mech.dto';
 
 @Injectable()
 export class MechService {
   constructor(
-    @InjectRepository(Mech)
-    private readonly mechRepository: Repository<Mech>,
+    @InjectRepository(MechEntity)
+    private readonly mechRepository: Repository<MechEntity>,
   ) {}
 
   async findAll(): Promise<MechDto[]> {
@@ -23,9 +23,9 @@ export class MechService {
     return mech.toDTO();
   }
 
-  async create(mechDto: MechDto): Promise<Mech> {
-    let newMech: Mech = await this.mechRepository.save(mechDto);
-    return newMech;
+  async create(mechDto: MechDto): Promise<MechDto> {
+    let newMech: MechEntity = await this.mechRepository.save(mechDto);
+    return newMech.toDTO();
   }
 
   async delete(id: number): Promise<DeleteResult> {

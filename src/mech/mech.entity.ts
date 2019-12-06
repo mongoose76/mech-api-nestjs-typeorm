@@ -6,8 +6,8 @@ import {
   OneToMany,
   Index,
 } from 'typeorm';
-import { MechType } from '../mechType/mechType.entity';
-import { MechWeaponHardpoint as MechHardpoint } from './mechWeaponHardpoint.entity';
+import { MechTypeEntity } from '../mechType/mechType.entity';
+import { MechHardpointEntity as MechHardpoint } from './mechWeaponHardpoint.entity';
 import { MechClass } from './interfaces/mechEnums';
 import { MechDto } from './interfaces/mech.dto';
 
@@ -19,8 +19,8 @@ export class MechEntity {
   @Column()
   typeId: number;
 
-  @ManyToOne(type => MechType)
-  type: MechType;
+  @ManyToOne(type => MechTypeEntity)
+  type: MechTypeEntity;
 
   @Index('mech_subtype_idx', { unique: true })
   @Column({ length: '50' })

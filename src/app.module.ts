@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Mech } from './mech/mech.entity';
+import { MechEntity } from './mech/mech.entity';
 import { MechController } from './mech/mech.controller';
-import { MechType } from './mechType/mechType.entity';
-import { MechWeaponHardpoint } from './mech/mechWeaponHardpoint.entity';
+import { MechTypeEntity } from './mechType/mechType.entity';
+import { MechHardpointEntity } from './mech/mechWeaponHardpoint.entity';
 import { MechService } from './mech/mech.service';
 
 @Module({
@@ -17,10 +17,10 @@ import { MechService } from './mech/mech.service';
       username: 'postgres',
       password: 'postgres',
       database: 'nestjs-battletech',
-      entities: [Mech, MechType, MechWeaponHardpoint],
+      entities: [MechEntity, MechTypeEntity, MechHardpointEntity],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Mech, MechType, MechWeaponHardpoint]),
+    TypeOrmModule.forFeature([MechEntity, MechTypeEntity, MechHardpointEntity]),
   ],
   controllers: [AppController, MechController],
   providers: [AppService, MechService],

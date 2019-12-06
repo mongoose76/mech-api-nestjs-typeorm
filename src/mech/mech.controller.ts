@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
-import { Mech } from './mech.entity';
+import { MechEntity } from './mech.entity';
 import { DeleteResult } from 'typeorm';
 import { MechDto } from './interfaces/mech.dto';
 import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
@@ -11,7 +11,7 @@ export class MechController {
   constructor(private readonly mechService: MechService) {}
 
   @ApiResponse({
-    type: Mech,
+    type: MechEntity,
   })
   @Get()
   findAll(): Promise<MechDto[]> {
@@ -19,7 +19,7 @@ export class MechController {
   }
 
   @ApiResponse({
-    type: Mech,
+    type: MechEntity,
   })
   @Get(':id')
   findOne(@Param('id') id: number): Promise<MechDto> {
@@ -28,10 +28,10 @@ export class MechController {
 
   @ApiCreatedResponse({
     description: 'New mech has been successfully created.',
-    type: Mech,
+    type: MechEntity,
   })
   @Post()
-  create(@Body() mechDto: MechDto): Promise<Mech> {
+  create(@Body() mechDto: MechDto): Promise<MechDto> {
     return this.mechService.create(mechDto);
   }
 

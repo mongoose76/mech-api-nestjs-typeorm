@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MechController } from './mech.controller';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Mech } from './mech.entity';
+import { MechEntity } from './mech.entity';
 import { Repository } from 'typeorm';
 
 export type MockType<T> = {
@@ -18,7 +18,7 @@ export const repositoryMockFactory: () => MockType<Repository<any>> = jest.fn(
 
 describe('MechController', () => {
   let mechController: MechController;
-  let repositoryMock: MockType<Repository<Mech>>;
+  let repositoryMock: MockType<Repository<MechEntity>>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -26,13 +26,13 @@ describe('MechController', () => {
       providers: [
         // Provide the mock instead of the actual repository
         {
-          provide: getRepositoryToken(Mech),
+          provide: getRepositoryToken(MechEntity),
           useFactory: repositoryMockFactory,
         },
       ],
     }).compile();
 
-    repositoryMock = module.get(getRepositoryToken(Mech));
+    repositoryMock = module.get(getRepositoryToken(MechEntity));
     mechController = module.get<MechController>(MechController);
   });
 
