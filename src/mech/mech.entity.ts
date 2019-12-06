@@ -7,12 +7,12 @@ import {
   Index,
 } from 'typeorm';
 import { MechType } from '../mechType/mechType.entity';
-import { MechWeaponHardpoint } from './mechWeaponHardpoint.entity';
+import { MechWeaponHardpoint as MechHardpoint } from './mechWeaponHardpoint.entity';
 import { MechClass } from './interfaces/mechEnums';
 import { MechDto } from './interfaces/mech.dto';
 
 @Entity()
-export class Mech {
+export class MechEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -61,13 +61,13 @@ export class Mech {
   rarity: number;
 
   @OneToMany(
-    type => MechWeaponHardpoint,
+    type => MechHardpoint,
     mechToHardpoint => mechToHardpoint.mech,
     {
       cascade: true,
     },
   )
-  weaponHardpoints: MechWeaponHardpoint[];
+  hardpoints: MechHardpoint[];
 
   /**
    * name
@@ -86,8 +86,8 @@ export class Mech {
       jumpJets: this.jumpJets,
       cost: this.cost,
       rarity: this.rarity,
-      hardpoints: this.weaponHardpoints
-        ? this.weaponHardpoints.map(hardpoint => hardpoint.toDTO())
+      hardpoints: this.hardpoints
+        ? this.hardpoints.map(hardpoint => hardpoint.toDTO())
         : [],
     };
   }

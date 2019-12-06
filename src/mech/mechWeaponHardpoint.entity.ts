@@ -1,18 +1,18 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Mech } from './mech.entity';
+import { MechEntity } from './mech.entity';
 import { MechBodypart, WeaponType } from './interfaces/mechEnums';
 import { MechHardpointDto } from './interfaces/mechHardpoint.dto';
 
 @Entity()
-export class MechWeaponHardpoint {
+export class MechHardpointEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @ManyToOne(
-    type => Mech,
-    mech => mech.weaponHardpoints,
+    type => MechEntity,
+    mech => mech.hardpoints,
   )
-  mech: Mech;
+  mech: MechEntity;
 
   @Column({
     type: 'enum',

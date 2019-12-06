@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class MechType {
+export class MechTypeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
