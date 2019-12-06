@@ -18,7 +18,7 @@ export class MechService {
 
   async findOne(id: number): Promise<MechDto> {
     let mech = await this.mechRepository.findOne(id, {
-      relations: ['type', 'weaponHardpoints'],
+      relations: ['type', 'hardpoints'],
     });
     return mech.toDTO();
   }
