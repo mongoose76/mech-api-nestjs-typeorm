@@ -12,13 +12,10 @@ export class SeedData1574419296985 implements MigrationInterface {
         const mechs: any = MechsSeed;
         for (let mech of mechs) {
             let mechType:any = await queryRunner.manager.getRepository('mech_type').findOne({ name: mech.type });
-            mech.type = mechType.id;
+            mech.typeId = mechType.id;
             mech.weaponHardpoints = [];
             for (let h of mech.hardpoints) {
-                let hardpoint = new MechHardpointEntity();
-                hardpoint.mech = mech;
-                hardpoint.bodypart = h.bodypart;
-                hardpoint.type = h.type;
+                let hardpoint = new MechHardpointEntity(h.bodypart, h.type);
                 mech.weaponHardpoints.push(hardpoint);
             }
             await queryRunner.manager.getRepository('mech').save(mech);

@@ -5,6 +5,12 @@ import { MechHardpointDto } from './interfaces/mechHardpoint.dto';
 
 @Entity('mech_hardpoint')
 export class MechHardpointEntity {
+
+  constructor(bodypart: MechBodypart, type: WeaponType) {
+    this.bodypart = bodypart;
+    this.type = type;
+  }
+
   @PrimaryGeneratedColumn()
   id: number;
 
