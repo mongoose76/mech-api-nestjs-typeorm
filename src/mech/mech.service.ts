@@ -24,6 +24,8 @@ export class MechService {
   }
 
   async create(mechDto: MechDto): Promise<MechDto> {
+    let mech: MechEntity = new MechEntity();
+    Object.assign(mech, mechDto);
     let newMech: MechEntity = await this.mechRepository.save(mechDto);
     return newMech.toDTO();
   }

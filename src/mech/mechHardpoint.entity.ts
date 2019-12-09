@@ -29,9 +29,9 @@ export class MechHardpointEntity {
   type: WeaponType;
 
   /**
-   * name
+   * Converts this entity to its DTO counterpart
    */
-  public toDTO(): MechHardpointDto {
+  toDTO(): MechHardpointDto {
     return {
       bodypart: this.bodypart,
       type: this.type,

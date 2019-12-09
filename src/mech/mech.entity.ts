@@ -7,7 +7,7 @@ import {
   Index,
 } from 'typeorm';
 import { MechTypeEntity } from '../mechType/mechType.entity';
-import { MechHardpointEntity as MechHardpoint } from './mechHardpoint.entity';
+import { MechHardpointEntity } from './mechHardpoint.entity';
 import { MechClass } from './interfaces/mechEnums';
 import { MechDto } from './interfaces/mech.dto';
 
@@ -61,18 +61,18 @@ export class MechEntity {
   rarity: number;
 
   @OneToMany(
-    type => MechHardpoint,
+    type => MechHardpointEntity,
     mechToHardpoint => mechToHardpoint.mech,
     {
       cascade: true,
     },
   )
-  hardpoints: MechHardpoint[];
+  hardpoints: MechHardpointEntity[];
 
   /**
-   * name
+   * Converts this entity to its DTO counterpart
    */
-  public toDTO(): MechDto {
+  toDTO(): MechDto {
     return {
       typeId: this.type.id,
       subtype: this.subtype,
