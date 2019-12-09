@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MechEntity } from './mech.entity';
-import { Repository, DeleteResult } from 'typeorm';
+import { Repository, DeleteResult, DeepPartial } from 'typeorm';
 import { MechDto } from './interfaces/mech.dto';
 import { MechTypeEntity } from 'src/mechType/mechType.entity';
 import { MechHardpointEntity } from './mechHardpoint.entity';
@@ -32,6 +32,17 @@ export class MechService {
     Object.assign(mech, mechDto);
     mech.type = await this.mechTypeRepository.findOne(mechDto.typeId);
     mech.hardpoints = mechDto.hardpoints.map(h => new MechHardpointEntity(h.bodypart, h.type));
+    await this.mechRepository.save(mech);
+    return mech.toDTO();
+  }
+
+  async update(id: number, mechDto: DeepPartial<MechDto>): Promise<MechDto> {
+    let mech: MechEntity = await this.mechRepository.findOne(id, {
+      relations: ['type', 'hardpoints'],
+    });
+    Object.assign(mech, mechDto);
+    mech.type = mechDto.typeId ? await this.mechTypeRepository.findOne(mechDto.typeId) : mech.type;
+    mech.hardpoints = mechDto.hardpoints ? mechDto.hardpoints.map(h => new MechHardpointEntity(h.bodypart, h.type)) : mech.hardpoints;
     await this.mechRepository.save(mech);
     return mech.toDTO();
   }

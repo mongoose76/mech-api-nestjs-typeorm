@@ -1,8 +1,8 @@
-import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
-import { MechEntity } from './mech.entity';
-import { DeleteResult } from 'typeorm';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { ApiCreatedResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { DeepPartial, DeleteResult } from 'typeorm';
 import { MechDto } from './interfaces/mech.dto';
-import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
+import { MechEntity } from './mech.entity';
 import { MechService } from './mech.service';
 
 @ApiTags('mech')
@@ -33,6 +33,11 @@ export class MechController {
   @Post()
   create(@Body() mechDto: MechDto): Promise<MechDto> {
     return this.mechService.create(mechDto);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: number, @Body() mechDto: DeepPartial<MechDto>): Promise<MechDto> {
+    return this.mechService.update(id, mechDto);
   }
 
   @ApiResponse({
